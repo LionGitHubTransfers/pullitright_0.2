@@ -1,0 +1,63 @@
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Library/
+Target/
+Logs
+Logs/
+Logs/*
+Recordings/
+Recordings/*
+/[Uu]ser[Ss]ettings/
+!/[Aa]ssets/**/*.meta
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+obj/
+.idea/
+.idea/*
+*.svd
+*.userprefs
+/*.csproj
+*.pidb
+*.suo
+/*.sln
+*.user
+*.unityproj
+*.booproj
+.vscode
+.vs
+.iadea
+# rider unity plugin
+Assets/Plugins/Editor*
+ 
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+!*.dll
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ============= #
+# Project Split #
+# ============= #
+game/
+CSharp70Support/compilation.log
+
+# ============ #
+# AssetBundles #
+# ============ #
+Assets/StreamingAssets/AssetBundles.meta
+Assets/StreamingAssets/AssetBundles/
+Assets/HeavyAssets/Assetbundles/
+Assets/HeavyAssets/Assetbundles.meta
+iOSBuild/
+builds/
