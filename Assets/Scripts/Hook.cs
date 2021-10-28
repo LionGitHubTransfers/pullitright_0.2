@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Obi;
@@ -12,7 +13,6 @@ public class Hook : MonoBehaviour
     [SerializeField] private ObiRope obiRope;
     [SerializeField] private ObiColliderBase hookCollider;
     [SerializeField] private ObiColliderBase targetCollider;
-    [SerializeField] private FixedJoint fixedJoint;
     [SerializeField] private float changeRopeSpeed;
 
     private Camera camera;
@@ -55,17 +55,20 @@ public class Hook : MonoBehaviour
                     pinConstraints.Clear();
                     var batch = new ObiPinConstraintsBatch();
                     batch.AddConstraint(obiRope.solverIndices[0], hookCollider, Vector3.zero, Quaternion.identity, 0, 0, float.PositiveInfinity);
-                    batch.AddConstraint(obiRope.solverIndices[obiRope.blueprint.activeParticleCount - 1], hit.collider.GetComponent<ObiColliderBase>(), Vector3.zero, Quaternion.identity, 0, 0, float.PositiveInfinity);
+                    var obiColliderBase = hit.collider.GetComponent<ObiColliderBase>();
+                    batch.AddConstraint(obiRope.solverIndices[obiRope.blueprint.activeParticleCount - 1], obiColliderBase, Vector3.zero, Quaternion.identity, 0, 0, float.PositiveInfinity);
                     batch.activeConstraintCount = 2;
                     pinConstraints.AddBatch(batch);
 
                     obiRope.SetConstraintsDirty(Oni.ConstraintType.Pin);
                     isLocked = true;
+                    cursor.ChangeLength(Vector3.Distance(transform.position, obiColliderBase.transform.position) * lenghtMofier);
                 } 
                 else if (!isLocked && isLaunched)
                 {
                     moveHookTransform.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-                    cursor.ChangeLength(Vector3.Distance(transform.position, hit.point) * lenghtMofier);   
+                    cursor.ChangeLength(Vector3.Distance(transform.position, hit.point) * lenghtMofier);
+                    Debug.Log($"{gameObject.name} - {obiRope.restLength}");
                 }
             }
         }
@@ -78,10 +81,14 @@ public class Hook : MonoBehaviour
                 moveHookTransform.position = transform.position;
             }
         }
+    }
 
+    private void FixedUpdate()
+    {
         if (isNeedToPull)
         {
             cursor.ChangeLength(obiRope.restLength - changeRopeSpeed * Time.deltaTime);
+            Debug.Log($"{gameObject.name} - {obiRope.restLength}");
         }
     }
 

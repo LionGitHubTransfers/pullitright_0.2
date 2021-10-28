@@ -114,12 +114,11 @@ MonoBehaviour:
   moveHookTransform: {fileID: 4613939336164593508}
   hookRigidbody: {fileID: 4613939336164593512}
   cursor: {fileID: 4613939335747381140}
-  lenghtMofier: 1
+  lenghtMofier: 0.56
   obiRope: {fileID: 4613939335747381137}
   hookCollider: {fileID: 4613939334936503707}
   targetCollider: {fileID: 4613939336164593509}
-  fixedJoint: {fileID: 0}
-  changeRopeSpeed: 1
+  changeRopeSpeed: 5
 --- !u!114 &4613939334936503707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +321,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4613939335747381167}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8b45ebbf86be4df6b0e6cd933812af2, type: 3}
   m_Name: 
