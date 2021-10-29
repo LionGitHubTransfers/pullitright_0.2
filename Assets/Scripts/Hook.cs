@@ -1,3 +1,4 @@
+using System;
 using Filo;
 using UnityEngine;
 
@@ -7,11 +8,13 @@ public class Hook : MonoBehaviour
     [SerializeField] private Cable cable;
     [SerializeField] private HingeJoint joint;
 
+    public event Action OnLocked;
+    
     private Camera camera;
     private bool isLocked = false;
     private bool isLaunched = false;
     private float startRopeLenght;
-    
+
     void Start()
     {
         camera = Camera.main;
@@ -25,22 +28,31 @@ public class Hook : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100f))
             {
+                var point = hit.collider.GetComponent<HookTargetPoint>();
                 if (hit.collider.gameObject == gameObject)
                 {
                     isLaunched = true;
                 }
-                if (hit.collider.CompareTag("Player") && !isLocked && isLaunched)
+                if (point != null && point.Cable == null && !isLocked && isLaunched)
                 {
                     isLocked = true;
                     cable.links.RemoveAll(link => link.type == Cable.Link.LinkType.Attachment);
-                    cable.links.Add(new Cable.Link() {body = hit.collider.GetComponent<CablePoint>(), type = Cable.Link.LinkType.Attachment});
+                    var cablePoint = hit.collider.GetComponent<CablePoint>();
+                    cable.links.Add(new Cable.Link() {body = cablePoint, type = Cable.Link.LinkType.Attachment});
                     cable.Setup();
+                    point.Cable = cable;
+                    OnLocked?.Invoke();
                 } 
                 else if (!isLocked && isLaunched)
                 {
                     moveHookTransform.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);
                 }
             }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            moveHookTransform.position = transform.position;
         }
     }
 
