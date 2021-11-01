@@ -16,7 +16,11 @@ public class WinController : MonoBehaviour
         if (other.CompareTag("Target"))
         {
             var percentage = BoundsContainedPercentage(other.bounds, collider.bounds);
-            if (percentage > finishCoefficient)
+            // if (percentage > finishCoefficient)
+            // {
+            //     levelController.WinLevel();
+            // }
+            if (ContainBounds(collider.bounds, other.bounds) && percentage > finishCoefficient)
             {
                 levelController.WinLevel();
             }
@@ -37,5 +41,10 @@ public class WinController : MonoBehaviour
         }
  
         return total;
+    }
+    
+    private bool ContainBounds(Bounds bounds, Bounds target)
+    {
+        return bounds.Contains(target.min) && bounds.Contains(target.max);
     }
 }
