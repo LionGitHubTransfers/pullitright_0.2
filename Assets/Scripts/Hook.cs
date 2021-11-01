@@ -1,23 +1,40 @@
 using System;
 using Filo;
+using Obi;
 using UnityEngine;
 
 public class Hook : MonoBehaviour
 {
     [SerializeField] private Transform moveHookTransform;
+    [SerializeField] private Rigidbody hookRigidbody;
+    [SerializeField] private ObiRopeCursor cursor;
+    [SerializeField] private float lenghtMofier;
+    [SerializeField] private ObiRope obiRope;
+    [SerializeField] private ObiColliderBase hookCollider;
+    [SerializeField] private ObiColliderBase targetCollider;
     [SerializeField] private Cable cable;
     [SerializeField] private HingeJoint joint;
 
     public event Action OnLocked;
-    
     private Camera camera;
     private bool isLocked = false;
     private bool isLaunched = false;
     private float startRopeLenght;
-
+    
     void Start()
     {
+        var pinConstraints = obiRope.GetConstraintsByType(Oni.ConstraintType.Pin) as ObiConstraints<ObiPinConstraintsBatch>;
+        pinConstraints.Clear();
+        var batch = new ObiPinConstraintsBatch();
+        batch.AddConstraint(obiRope.solverIndices[0], hookCollider, Vector3.zero, Quaternion.identity, 0, 0, float.PositiveInfinity);
+        batch.AddConstraint(obiRope.solverIndices[obiRope.blueprint.activeParticleCount - 1], targetCollider, Vector3.zero, Quaternion.identity, 0, 0, float.PositiveInfinity);
+        batch.activeConstraintCount = 2;
+        pinConstraints.AddBatch(batch);
+
+        obiRope.SetConstraintsDirty(Oni.ConstraintType.Pin);
+        
         camera = Camera.main;
+        startRopeLenght = obiRope.restLength;
     }
     
     private void Update()
@@ -36,23 +53,31 @@ public class Hook : MonoBehaviour
                 if (point != null && point.Cable == null && !isLocked && isLaunched)
                 {
                     isLocked = true;
-                    cable.links.RemoveAll(link => link.type == Cable.Link.LinkType.Attachment);
-                    var cablePoint = hit.collider.GetComponent<CablePoint>();
-                    cable.links.Add(new Cable.Link() {body = cablePoint, type = Cable.Link.LinkType.Attachment});
+                    cable.links.Add(new Cable.Link {
+                        body = hit.collider.GetComponent<CablePoint>(), 
+                        type = Cable.Link.LinkType.Attachment
+                    });
                     cable.Setup();
                     point.Cable = cable;
                     OnLocked?.Invoke();
+                    obiRope.gameObject.SetActive(false);
                 } 
                 else if (!isLocked && isLaunched)
                 {
                     moveHookTransform.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+                    cursor.ChangeLength(Vector3.Distance(transform.position, hit.point) * lenghtMofier);
+                    Debug.Log($"{gameObject.name} - {obiRope.restLength}");
                 }
             }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            moveHookTransform.position = transform.position;
+            if (!isLocked && isLaunched)
+            {
+                cursor.ChangeLength(startRopeLenght);
+                moveHookTransform.position = transform.position;
+            }
         }
     }
 
