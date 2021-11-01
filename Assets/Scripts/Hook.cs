@@ -15,7 +15,7 @@ public class Hook : MonoBehaviour
     [SerializeField] private Cable cable;
     [SerializeField] private HingeJoint joint;
 
-    public event Action OnLocked;
+    public event Action<Cable> OnLocked;
     private Camera camera;
     private bool isLocked = false;
     private bool isLaunched = false;
@@ -59,7 +59,8 @@ public class Hook : MonoBehaviour
                     });
                     cable.Setup();
                     point.Cable = cable;
-                    OnLocked?.Invoke();
+                    OnLocked?.Invoke(cable);
+                    Destroy(hookRigidbody.gameObject);
                     obiRope.gameObject.SetActive(false);
                 } 
                 else if (!isLocked && isLaunched)

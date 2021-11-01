@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Filo;
 using MonsterLove.StateMachine;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,14 +15,17 @@ public class LevelController : MonoBehaviour
     }
 
     [SerializeField] private Button pullButton;
+    [SerializeField] private CableSolver cableSolver;
     public StateMachine<GameState> Fsm { private set; get; }
 
     private Hook[] hooks;
     private bool isCanPull = false;
+    private List<Cable> cables;
 
     private void Awake()
     {
         Fsm = new StateMachine<GameState>(this);
+        cables = new List<Cable>();
         Fsm.ChangeState(GameState.Init);
     }
 
@@ -29,10 +34,12 @@ public class LevelController : MonoBehaviour
         hooks = FindObjectsOfType<Hook>();
         foreach (var hook in hooks)
         {
-            hook.OnLocked += () =>
+            hook.OnLocked += (cable) =>
             {
                 pullButton.interactable = true;
                 isCanPull = true;
+                cables.Add(cable);
+                cableSolver.cables = cables.ToArray();
             };
         }
 

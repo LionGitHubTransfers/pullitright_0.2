@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   section: {fileID: 11400000, guid: f5860ebf9a0c54ffb898feaf0a3ea546, type: 2}
   uvScale: {x: 1, y: 1}
-  thickness: 0.08
+  thickness: 0.026666667
 --- !u!1 &4613939334936503701
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +428,7 @@ MonoBehaviour:
   uvScale: {x: 1, y: 1}
   normalizeV: 1
   section: {fileID: 11400000, guid: a0bc36a59515f413e90e10895929c938, type: 2}
-  thicknessScale: 0.8
+  thicknessScale: 0.26666668
 --- !u!114 &4613939335747381140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,8 +605,8 @@ HingeJoint:
     targetPosition: 0
   m_UseMotor: 0
   m_Motor:
-    targetVelocity: -80
-    force: 10000
+    targetVelocity: -200
+    force: 1000000
     freeSpin: 0
   m_UseLimits: 0
   m_Limits:
