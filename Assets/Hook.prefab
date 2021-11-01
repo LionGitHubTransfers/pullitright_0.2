@@ -597,7 +597,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.9685968, y: -0.54583156, z: -9.196121}
+  m_ConnectedAnchor: {x: -1.6014031, y: -0.48583156, z: -9.196121}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -700,10 +700,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3477821731311062464, guid: 0b5766044d53841418f75306b53bb721, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ebe6bbbbd5d8440668a45017caa9bb98, type: 2}
     - target: {fileID: 919132149155446097, guid: 0b5766044d53841418f75306b53bb721, type: 3}
       propertyPath: m_Name
       value: winch
       objectReference: {fileID: 0}
+    - target: {fileID: 3765108852280629433, guid: 0b5766044d53841418f75306b53bb721, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d0ce5c681f2042a6883151fb09a3c18, type: 2}
+    - target: {fileID: 4407187375235809858, guid: 0b5766044d53841418f75306b53bb721, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c8fdd124e223334daf9828b129cfb59, type: 2}
+    - target: {fileID: 4431670454091400558, guid: 0b5766044d53841418f75306b53bb721, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d0ce5c681f2042a6883151fb09a3c18, type: 2}
+    - target: {fileID: 8424073627695423409, guid: 0b5766044d53841418f75306b53bb721, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c8fdd124e223334daf9828b129cfb59, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b5766044d53841418f75306b53bb721, type: 3}
 --- !u!4 &2344016290376795649 stripped
