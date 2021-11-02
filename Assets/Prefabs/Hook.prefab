@@ -56,13 +56,13 @@ MonoBehaviour:
     type: 3
     orientation: 1
     slack: 0
-    hybridRolling: 1
-    storedCable: 3.41
+    hybridRolling: 0
+    storedCable: 0
     spoolSeparation: 0.06
     cableSpawnSpeed: 0
     inAnchor: {x: 0, y: 0, z: 0}
     outAnchor: {x: 0, y: 0, z: 0}
-  restLength: 3.41
+  restLength: 0
 --- !u!23 &2881297586876942997
 MeshRenderer:
   m_ObjectHideFlags: 0

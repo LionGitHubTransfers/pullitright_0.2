@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Filo;
 using MonsterLove.StateMachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
@@ -14,7 +15,8 @@ public class LevelController : MonoBehaviour
         Lose
     }
 
-    [SerializeField] private Button pullButton;
+    [SerializeField] private GameObject disablePullButtonObject;
+    [SerializeField] private GameObject pullButtonObject;
     [SerializeField] private CableSolver cableSolver;
     public StateMachine<GameState> Fsm { private set; get; }
 
@@ -36,14 +38,16 @@ public class LevelController : MonoBehaviour
         {
             hook.OnLocked += (cable) =>
             {
-                pullButton.interactable = true;
+                disablePullButtonObject.SetActive(false);
+                pullButtonObject.SetActive(true);
                 isCanPull = true;
                 cables.Add(cable);
                 cableSolver.cables = cables.ToArray();
             };
         }
 
-        pullButton.interactable = false;
+        disablePullButtonObject.SetActive(true);
+        pullButtonObject.SetActive(false);
         isCanPull = false;
     }
 
@@ -76,6 +80,16 @@ public class LevelController : MonoBehaviour
         if (Fsm.State == GameState.Lose) return;
         Fsm.ChangeState(GameState.Win);
         StopPull();
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoseLevel()
