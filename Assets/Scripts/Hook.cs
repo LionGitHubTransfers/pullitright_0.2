@@ -78,6 +78,7 @@ public class Hook : MonoBehaviour
             {
                 cursor.ChangeLength(startRopeLenght);
                 moveHookTransform.position = transform.position;
+                isLaunched = false;
             }
         }
     }
