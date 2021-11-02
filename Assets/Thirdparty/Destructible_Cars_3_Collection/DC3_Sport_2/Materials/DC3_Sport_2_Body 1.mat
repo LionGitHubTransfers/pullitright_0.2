@@ -7,11 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: floor
+  m_Name: DC3_Sport_2_Body 1
   m_Shader: {fileID: 4800000, guid: ccfc7d68845db8341944b3091b59be55, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 0ef51126d4967f9468f657bd4fb26828, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -60,49 +60,27 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AmbientPower: 0.376
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.931
+    - _Glossiness: 0.531
     - _GlossyReflections: 1
-    - _GradientHeight: 10
-    - _GradientYStartPos: 0
-    - _LightmapPower: 0.5
-    - _Metallic: 0.183
+    - _Metallic: 0.2
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RampSmooth: 0.1
-    - _RampThreshold: 0.461
-    - _Rotation: 0
+    - _RampSmooth: 0.936
+    - _RampThreshold: 0.443
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _AmbientColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
-    - _BackBottomColor: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _BackTopColor: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _BottomColor: {r: 0, g: 0.5, b: 0.5, a: 0}
-    - _Color: {r: 0.18396229, g: 0.5396441, b: 1, a: 1}
-    - _Color1: {r: 0.4669811, g: 0.8001233, b: 1, a: 1}
-    - _Color2: {r: 0, g: 0.47085738, b: 1, a: 1}
-    - _Emission: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.9433962, g: 0.30704877, b: 0.45793533, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FrontBottomColor: {r: 1, g: 0, b: 0, a: 0}
-    - _FrontTopColor: {r: 1, g: 0, b: 0, a: 0}
-    - _HColor: {r: 0.785, g: 0.785, b: 0.785, a: 1}
-    - _LeftBottomColor: {r: 0.5, g: 0, b: 0.5, a: 0}
-    - _LeftTopColor: {r: 0.5, g: 0, b: 0.5, a: 0}
-    - _LightTint: {r: 1, g: 1, b: 1, a: 0}
-    - _LightmapColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Offset: {r: 0, g: 0, b: 0, a: 1}
-    - _RightBottomColor: {r: 0, g: 0, b: 1, a: 0}
-    - _RightTopColor: {r: 0, g: 0, b: 1, a: 0}
-    - _SColor: {r: 0.0047169924, g: 0.025348991, b: 1, a: 1}
-    - _TopColor: {r: 0.39076945, g: 0.3537736, b: 1, a: 0}
+    - _HColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
