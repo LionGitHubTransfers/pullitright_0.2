@@ -19,7 +19,7 @@ public class Hook : MonoBehaviour
     [SerializeField] private Transform ropeStartTransform;
     [SerializeField] private ParticleSystem pullParticleSystem;
     [SerializeField] private Color lockedColor;
-    [SerializeField] private MeshRenderer cableRenderer;
+    [SerializeField] private MeshRenderer[] cableRenderers;
 
     public event Action<Cable> OnLocked;
     private HookTargetPoint[] targetPoints;
@@ -95,7 +95,10 @@ public class Hook : MonoBehaviour
                 });
                 cable.Setup();
                 lockedPoint.Lock(cable, lockedColor);
-                cableRenderer.material.color = lockedColor;
+                foreach (var cableRenderer in cableRenderers)
+                {
+                    cableRenderer.material.color = lockedColor;    
+                }
                 OnLocked?.Invoke(cable);
                 Destroy(hookRigidbody.gameObject);
                 obiRope.gameObject.SetActive(false);
