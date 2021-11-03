@@ -16,6 +16,8 @@ public class Hook : MonoBehaviour
     [SerializeField] private Cable cable;
     [SerializeField] private HingeJoint joint;
     [SerializeField] private float magnetPointDistance;
+    [SerializeField] private Transform ropeStartTransform;
+    [SerializeField] private ParticleSystem pullParticleSystem;
 
     public event Action<Cable> OnLocked;
     private HookTargetPoint[] targetPoints;
@@ -30,7 +32,7 @@ public class Hook : MonoBehaviour
         var pinConstraints = obiRope.GetConstraintsByType(Oni.ConstraintType.Pin) as ObiConstraints<ObiPinConstraintsBatch>;
         pinConstraints.Clear();
         var batch = new ObiPinConstraintsBatch();
-        batch.AddConstraint(obiRope.solverIndices[0], hookCollider, Vector3.zero, Quaternion.identity, 0, 0, float.PositiveInfinity);
+        batch.AddConstraint(obiRope.solverIndices[0], hookCollider, ropeStartTransform.localPosition , Quaternion.identity, 0, 0, float.PositiveInfinity);
         batch.AddConstraint(obiRope.solverIndices[obiRope.blueprint.activeParticleCount - 1], targetCollider, Vector3.zero, Quaternion.identity, 0, 0, float.PositiveInfinity);
         batch.activeConstraintCount = 2;
         pinConstraints.AddBatch(batch);
@@ -109,10 +111,12 @@ public class Hook : MonoBehaviour
     public void SetNeedToPull()
     {
         joint.useMotor = true;
+        pullParticleSystem.Play();
     }
 
     public void StopPull()
     {
         joint.useMotor = false;
+        pullParticleSystem.Stop();
     }
 }
