@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Filo;
 using Obi;
 using UnityEngine;
@@ -14,15 +15,18 @@ public class Hook : MonoBehaviour
     [SerializeField] private ObiColliderBase targetCollider;
     [SerializeField] private Cable cable;
     [SerializeField] private HingeJoint joint;
+    [SerializeField] private float magnetPointDistance;
 
     public event Action<Cable> OnLocked;
+    private HookTargetPoint[] targetPoints;
+    private HookTargetPoint lockedPoint;
     private Camera camera;
-    private bool isLocked = false;
     private bool isLaunched = false;
     private float startRopeLenght;
     
     void Start()
     {
+        targetPoints = FindObjectsOfType<HookTargetPoint>();
         var pinConstraints = obiRope.GetConstraintsByType(Oni.ConstraintType.Pin) as ObiConstraints<ObiPinConstraintsBatch>;
         pinConstraints.Clear();
         var batch = new ObiPinConstraintsBatch();
@@ -39,42 +43,61 @@ public class Hook : MonoBehaviour
     
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            var ray = camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100f))
+            {
+                if (hit.collider.gameObject == gameObject && lockedPoint == null)
+                {
+                    isLaunched = true;
+                }
+            }
+        }
+        
+        if (!isLaunched) return;
+        
         if (Input.GetMouseButton(0))
         {
             var ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100f))
             {
-                var point = hit.collider.GetComponent<HookTargetPoint>();
-                if (hit.collider.gameObject == gameObject)
+                var point = targetPoints.FirstOrDefault(targetPoint => targetPoint.Cable == null && 
+                                                                       Vector3.Distance(targetPoint.transform.position, hit.point) < magnetPointDistance);
+                if (point != null && point.Cable == null && lockedPoint == null)
                 {
-                    isLaunched = true;
-                }
-                if (point != null && point.Cable == null && !isLocked && isLaunched)
-                {
-                    isLocked = true;
-                    cable.links.Add(new Cable.Link {
-                        body = hit.collider.GetComponent<CablePoint>(), 
-                        type = Cable.Link.LinkType.Attachment
-                    });
-                    cable.Setup();
-                    point.Cable = cable;
-                    OnLocked?.Invoke(cable);
-                    Destroy(hookRigidbody.gameObject);
-                    obiRope.gameObject.SetActive(false);
+                    lockedPoint = point;
+                    moveHookTransform.position = lockedPoint.transform.position;
+                    cursor.ChangeLength(Vector3.Distance(transform.position, lockedPoint.transform.position) * lenghtMofier);
                 } 
-                else if (!isLocked && isLaunched)
+                else if (point == null)
                 {
                     moveHookTransform.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);
                     cursor.ChangeLength(Vector3.Distance(transform.position, hit.point) * lenghtMofier);
-                    Debug.Log($"{gameObject.name} - {obiRope.restLength}");
+                    lockedPoint = null;
                 }
             }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (!isLocked && isLaunched)
+            if (lockedPoint != null)
+            {
+                cable.links.Add(new Cable.Link {
+                    body = lockedPoint.gameObject.GetComponent<CablePoint>(), 
+                    type = Cable.Link.LinkType.Attachment
+                });
+                cable.Setup();
+                lockedPoint.Cable = cable;
+                OnLocked?.Invoke(cable);
+                Destroy(hookRigidbody.gameObject);
+                obiRope.gameObject.SetActive(false);
+                lockedPoint = null;
+                isLaunched = false;
+            }
+            else if (isLaunched)
             {
                 cursor.ChangeLength(startRopeLenght);
                 moveHookTransform.position = transform.position;
