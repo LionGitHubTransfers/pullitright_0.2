@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using Filo;
 using MonsterLove.StateMachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
@@ -101,6 +99,10 @@ public class LevelController : MonoBehaviour
     public void WinLevel()
     {
         if (Fsm.State == GameState.Lose) return;
+        foreach (var hook in hooks)
+        {
+            hook.IsCanLaunch = false;
+        }
         Fsm.ChangeState(GameState.Win);
         StopPull();
     }
@@ -118,6 +120,10 @@ public class LevelController : MonoBehaviour
     public void LoseLevel()
     {
         if (Fsm.State == GameState.Win) return;
+        foreach (var hook in hooks)
+        {
+            hook.IsCanLaunch = false;
+        }
         Fsm.ChangeState(GameState.Lose);
         StopPull();
     }

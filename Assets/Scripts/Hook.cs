@@ -27,6 +27,7 @@ public class Hook : MonoBehaviour
     private Camera camera;
     private bool isLaunched = false;
     private float startRopeLenght;
+    public bool IsCanLaunch = true;
     
     void Start()
     {
@@ -40,7 +41,7 @@ public class Hook : MonoBehaviour
         pinConstraints.AddBatch(batch);
 
         obiRope.SetConstraintsDirty(Oni.ConstraintType.Pin);
-        
+        IsCanLaunch = true;
         camera = Camera.main;
         startRopeLenght = obiRope.restLength;
     }
@@ -49,6 +50,7 @@ public class Hook : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (!IsCanLaunch) return;
             var ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100f))
