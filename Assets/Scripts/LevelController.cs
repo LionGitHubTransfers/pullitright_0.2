@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Filo;
 using MonsterLove.StateMachine;
@@ -15,19 +16,20 @@ public class LevelController : MonoBehaviour
         Lose
     }
 
-    [SerializeField] private GameObject disablePullButtonObject;
-    [SerializeField] private GameObject pullButtonObject;
     [SerializeField] private CableSolver cableSolver;
+    [SerializeField] private PullButton pullButton;
+    
     public StateMachine<GameState> Fsm { private set; get; }
 
     private Hook[] hooks;
-    private bool isCanPull = false;
     private List<Cable> cables;
+    private Camera camera;
 
     private void Awake()
     {
         Fsm = new StateMachine<GameState>(this);
         cables = new List<Cable>();
+        camera = Camera.main;
         Fsm.ChangeState(GameState.Init);
     }
 
@@ -38,22 +40,43 @@ public class LevelController : MonoBehaviour
         {
             hook.OnLocked += (cable) =>
             {
-                disablePullButtonObject.SetActive(false);
-                pullButtonObject.SetActive(true);
-                isCanPull = true;
                 cables.Add(cable);
                 cableSolver.cables = cables.ToArray();
             };
         }
+    }
 
-        disablePullButtonObject.SetActive(true);
-        pullButtonObject.SetActive(false);
-        isCanPull = false;
+    private void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            if (Fsm.State == GameState.Init)
+            {
+                var ray = camera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 100f))
+                {
+                    if (hit.collider.gameObject == pullButton.gameObject)
+                    {
+                        pullButton.Push();
+                        Pull();
+                    }
+                }    
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (Fsm.State == GameState.Pull)
+            {
+                pullButton.Release();
+                StopPullAll();    
+            }
+        }
     }
 
     public void Pull()
     {
-        if (!isCanPull) return;
         Fsm.ChangeState(GameState.Pull);
         foreach (var hook in hooks)
         {
