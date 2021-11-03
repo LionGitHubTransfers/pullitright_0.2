@@ -4,6 +4,7 @@ public class WinController : MonoBehaviour
 {
     [SerializeField] private LevelController levelController;
     [Range(0f, 1f)][SerializeField] private float finishCoefficient;
+    [SerializeField] private float distanceToWin;
     private Collider collider;
 
     private void Awake()
@@ -15,12 +16,15 @@ public class WinController : MonoBehaviour
     {
         if (other.CompareTag("Target"))
         {
-            var percentage = BoundsContainedPercentage(other.bounds, collider.bounds);
+            var percentage = BoundsContainedPercentage(other.bounds, collider.bounds) > finishCoefficient;
             // if (percentage > finishCoefficient)
             // {
             //     levelController.WinLevel();
             // }
-            if (ContainBounds(collider.bounds, other.bounds) && percentage > finishCoefficient)
+            var bounds = ContainBounds(collider.bounds, other.bounds);
+            var distance = Vector3.Distance(collider.transform.position, other.transform.position) < distanceToWin;
+            Debug.Log($"Perce: {percentage}, Bounds: {bounds}, Distance: {distance}");
+            if (percentage && bounds && distance)
             {
                 levelController.WinLevel();
             }
