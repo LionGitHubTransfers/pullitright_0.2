@@ -109,7 +109,9 @@ public class LevelController : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        var currentLevel = SceneManager.GetActiveScene().buildIndex;
+        var totalLevel = SceneManager.sceneCountInBuildSettings;
+        SceneManager.LoadScene((currentLevel + 1) % totalLevel);
     }
 
     public void RestartLevel()
