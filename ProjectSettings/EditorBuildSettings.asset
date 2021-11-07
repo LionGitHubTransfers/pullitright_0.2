@@ -5,10 +5,37 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Level 5.unity
+  - enabled: 0
+    path: Assets/Scenes/Level shield not working.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/Level 1.unity
+    guid: 2d7fb35613c2d4392b565758890924ab
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: 99b7b52430f134017bd0340d87b5b9b7
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: 9b5abc3a2aeb3475b8e4f9eeaae20235
+  - enabled: 1
+    path: Assets/Scenes/Level 4.unity
+    guid: bd21df39632464ca28e5feac8109995a
+  - enabled: 1
+    path: Assets/Scenes/Level 5.unity
+    guid: 41d1e7df6531f47849a72add3c57b03a
+  - enabled: 1
+    path: Assets/Scenes/Level 6.unity
+    guid: 7394350411e324192819d8dd2c333a1e
+  - enabled: 1
+    path: Assets/Scenes/Level 7.unity
+    guid: a071d15951c5849cd85004de84250e13
+  - enabled: 1
     path: Assets/Scenes/Level 8.unity
+    guid: 3637034279d9d4f64929d0f85bc3db0b
+  - enabled: 1
+    path: Assets/Scenes/Level 9.unity
+    guid: b5804dcefd2cb44bfb7311a857feeb18
+  - enabled: 1
+    path: Assets/Scenes/Level 10.unity
     guid: 18e0229e4be3d4bbbac71ddca735dfe4
   m_configObjects: {}
