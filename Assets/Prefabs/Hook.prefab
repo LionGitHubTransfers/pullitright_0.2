@@ -517,7 +517,7 @@ MonoBehaviour:
   uvScale: {x: 1, y: 1}
   normalizeV: 1
   section: {fileID: 11400000, guid: a0bc36a59515f413e90e10895929c938, type: 2}
-  thicknessScale: 0.8
+  thicknessScale: 0.9
 --- !u!114 &4613939335747381140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,7 +595,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4613939336164593509
 MonoBehaviour:
@@ -623,8 +623,8 @@ Rigidbody:
   m_GameObject: {fileID: 4613939336164593511}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -748,7 +748,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.077258036, y: 0.51454645, z: 0.06510509}
+  m_ConnectedAnchor: {x: -0.106800005, y: 0.68453234, z: 0.09}
   m_UseSpring: 1
   m_Spring:
     spring: 0
