@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 440367436970194331}
   - component: {fileID: 440367436970194276}
   - component: {fileID: 440367436970194277}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hook Target Point
   m_TagString: Player
   m_Icon: {fileID: 0}

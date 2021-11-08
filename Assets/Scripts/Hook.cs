@@ -29,7 +29,8 @@ public class Hook : MonoBehaviour
     private bool isLaunched = false;
     private float startRopeLenght;
     public bool IsCanLaunch = true;
-    
+    private LayerMask dragMask;
+
     void Start()
     {
         targetPoints = FindObjectsOfType<HookTargetPoint>();
@@ -46,6 +47,7 @@ public class Hook : MonoBehaviour
         camera = Camera.main;
         startRopeLenght = obiRope.restLength;
         SetColors(startColor);
+        dragMask = LayerMask.GetMask("Drag");
     }
 
     private void SetColors(Color color)
@@ -78,7 +80,7 @@ public class Hook : MonoBehaviour
         {
             var ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100f))
+            if (Physics.Raycast(ray, out hit, 100f, dragMask))
             {
                 var point = targetPoints.FirstOrDefault(targetPoint => targetPoint.Cable == null && 
                                                                        Vector3.Distance(targetPoint.transform.position, hit.point) < magnetPointDistance);
