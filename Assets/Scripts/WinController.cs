@@ -5,7 +5,10 @@ public class WinController : MonoBehaviour
     [SerializeField] private LevelController levelController;
     [Range(0f, 1f)][SerializeField] private float finishCoefficient;
     [SerializeField] private float distanceToWin;
+    [SerializeField] private ParticleSystem[] winParticles;
     private Collider collider;
+
+    private bool isWin = false;
 
     private void Awake()
     {
@@ -14,19 +17,20 @@ public class WinController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Target"))
+        if (other.CompareTag("Target") && !isWin)
         {
             var percentage = BoundsContainedPercentage(other.bounds, collider.bounds) > finishCoefficient;
-            // if (percentage > finishCoefficient)
-            // {
-            //     levelController.WinLevel();
-            // }
             var bounds = ContainBounds(collider.bounds, other.bounds);
             var distance = Vector3.Distance(collider.transform.position, other.transform.position) < distanceToWin;
             Debug.Log($"Perce: {percentage}, Bounds: {bounds}, Distance: {distance}");
             if (percentage && bounds && distance)
             {
                 levelController.WinLevel();
+                isWin = true;
+                foreach (var particle in winParticles)
+                {
+                    particle.Play();
+                }
             }
         }
     }
