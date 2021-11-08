@@ -21,6 +21,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] private float loseCameraShakeStrength = 0.2f;
     [SerializeField] private int loseCameraShakes = 50;
     [SerializeField] private LoadLevelManager levelManager;
+    [SerializeField] private int vibrationFrameInterval = 10;
     
     public StateMachine<GameState, Driver> Fsm { private set; get; }
 
@@ -74,7 +75,10 @@ public class LevelController : MonoBehaviour
 
     private void Pull_Update()
     {
-        Vibration.VibratePop();
+        if (Time.frameCount % vibrationFrameInterval == 0)
+        {
+            Vibration.VibratePop();   
+        }
         if (Input.GetMouseButtonUp(0))
         {
             pullButton.Release();
