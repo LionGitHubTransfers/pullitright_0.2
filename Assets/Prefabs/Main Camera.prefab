@@ -46,9 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cableSolver: {fileID: 0}
   pullButton: {fileID: 0}
-  loseCameraShakeDuration: 0.3
-  loseCameraShakeStrength: 0.2
-  loseCameraShakes: 50
+  loseCameraShakeDuration: 0.2
+  loseCameraShakeStrength: 0.1
+  loseCameraShakes: 40
 --- !u!114 &623080764128831841
 MonoBehaviour:
   m_ObjectHideFlags: 0
