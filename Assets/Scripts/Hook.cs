@@ -60,6 +60,8 @@ public class Hook : MonoBehaviour
     
     private void Update()
     {
+        if (!obiRope.gameObject.activeSelf) return;
+        
         if (Input.GetMouseButtonDown(0))
         {
             if (!IsCanLaunch) return;
