@@ -96,7 +96,15 @@ public class Hook : MonoBehaviour
                 } 
                 else if (point == null)
                 {
-                    moveHookTransform.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+                    if (hit.collider.CompareTag("Ground"))
+                    {
+                        moveHookTransform.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);    
+                    }
+                    else
+                    {
+                        moveHookTransform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                    }
+                    
                     cursor.ChangeLength(Vector3.Distance(transform.position, hit.point) * lenghtMofier);
                     lockedPoint = null;
                     SetColors(startColor);
