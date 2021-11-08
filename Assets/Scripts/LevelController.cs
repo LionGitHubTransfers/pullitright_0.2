@@ -20,6 +20,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] private float loseCameraShakeDuration = 0.3f;
     [SerializeField] private float loseCameraShakeStrength = 0.2f;
     [SerializeField] private int loseCameraShakes = 50;
+    [SerializeField] private LoadLevelManager levelManager;
     
     public StateMachine<GameState, Driver> Fsm { private set; get; }
 
@@ -118,14 +119,12 @@ public class LevelController : MonoBehaviour
 
     public void NextLevel()
     {
-        var currentLevel = SceneManager.GetActiveScene().buildIndex;
-        var totalLevel = SceneManager.sceneCountInBuildSettings;
-        SceneManager.LoadScene((currentLevel + 1) % totalLevel);
+        levelManager.LoadNextLevel();
     }
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        levelManager.LoadCurrentLevel();
     }
 
     public void LoseLevel()
