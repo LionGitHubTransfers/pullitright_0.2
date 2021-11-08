@@ -77,6 +77,7 @@ public class Hook : MonoBehaviour
                     lockedPoint = point;
                     moveHookTransform.position = lockedPoint.transform.position;
                     cursor.ChangeLength(Vector3.Distance(transform.position, lockedPoint.transform.position) * lenghtMofier);
+                    Vibration.VibratePop();
                 } 
                 else if (point == null)
                 {

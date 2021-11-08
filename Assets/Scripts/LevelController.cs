@@ -17,7 +17,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] private CableSolver cableSolver;
     [SerializeField] private PullButton pullButton;
     
-    public StateMachine<GameState> Fsm { private set; get; }
+    public StateMachine<GameState, Driver> Fsm { private set; get; }
 
     private Hook[] hooks;
     private List<Cable> cables;
@@ -25,10 +25,11 @@ public class LevelController : MonoBehaviour
 
     private void Awake()
     {
-        Fsm = new StateMachine<GameState>(this);
+        Fsm = new StateMachine<GameState, Driver>(this);
         cables = new List<Cable>();
         camera = Camera.main;
         Fsm.ChangeState(GameState.Init);
+        Vibration.Init();
     }
 
     private void Start()
@@ -46,30 +47,33 @@ public class LevelController : MonoBehaviour
 
     private void Update()
     {
+        Fsm.Driver.Update.Invoke();
+    }
+
+    private void Init_Update()
+    {
         if (Input.GetMouseButton(0))
         {
-            if (Fsm.State == GameState.Init)
+            var ray = camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100f))
             {
-                var ray = camera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 100f))
+                if (hit.collider.gameObject == pullButton.gameObject)
                 {
-                    if (hit.collider.gameObject == pullButton.gameObject)
-                    {
-                        pullButton.Push();
-                        Pull();
-                    }
-                }    
+                    pullButton.Push();
+                    Pull();
+                }
             }
         }
+    }
 
+    private void Pull_Update()
+    {
+        Vibration.VibratePop();
         if (Input.GetMouseButtonUp(0))
         {
-            if (Fsm.State == GameState.Pull)
-            {
-                pullButton.Release();
-                StopPullAll();    
-            }
+            pullButton.Release();
+            StopPullAll();
         }
     }
 
@@ -126,6 +130,7 @@ public class LevelController : MonoBehaviour
         {
             hook.IsCanLaunch = false;
         }
+        Vibration.VibratePeek();
         Fsm.ChangeState(GameState.Lose);
         StopPull();
     }
