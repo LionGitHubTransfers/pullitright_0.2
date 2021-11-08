@@ -19,6 +19,7 @@ public class Hook : MonoBehaviour
     [SerializeField] private Transform ropeStartTransform;
     [SerializeField] private ParticleSystem pullParticleSystem;
     [SerializeField] private Color lockedColor;
+    [SerializeField] private Color startColor;
     [SerializeField] private MeshRenderer[] cableRenderers;
 
     public event Action<Cable> OnLocked;
@@ -44,6 +45,15 @@ public class Hook : MonoBehaviour
         IsCanLaunch = true;
         camera = Camera.main;
         startRopeLenght = obiRope.restLength;
+        SetColors(startColor);
+    }
+
+    private void SetColors(Color color)
+    {
+        foreach (var cableRenderer in cableRenderers)
+        {
+            cableRenderer.material.color = color;    
+        }
     }
     
     private void Update()
@@ -78,12 +88,14 @@ public class Hook : MonoBehaviour
                     moveHookTransform.position = lockedPoint.transform.position;
                     cursor.ChangeLength(Vector3.Distance(transform.position, lockedPoint.transform.position) * lenghtMofier);
                     Vibration.VibratePop();
+                    SetColors(lockedColor);
                 } 
                 else if (point == null)
                 {
                     moveHookTransform.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);
                     cursor.ChangeLength(Vector3.Distance(transform.position, hit.point) * lenghtMofier);
                     lockedPoint = null;
+                    SetColors(startColor);
                 }
             }
         }
@@ -98,10 +110,6 @@ public class Hook : MonoBehaviour
                 });
                 cable.Setup();
                 lockedPoint.Lock(cable, lockedColor);
-                foreach (var cableRenderer in cableRenderers)
-                {
-                    cableRenderer.material.color = lockedColor;    
-                }
                 OnLocked?.Invoke(cable);
                 Destroy(hookRigidbody.gameObject);
                 obiRope.gameObject.SetActive(false);
