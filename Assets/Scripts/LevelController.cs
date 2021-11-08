@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using Filo;
 using MonsterLove.StateMachine;
 using UnityEngine;
@@ -16,6 +17,9 @@ public class LevelController : MonoBehaviour
 
     [SerializeField] private CableSolver cableSolver;
     [SerializeField] private PullButton pullButton;
+    [SerializeField] private float loseCameraShakeDuration = 0.3f;
+    [SerializeField] private float loseCameraShakeStrength = 0.2f;
+    [SerializeField] private int loseCameraShakes = 50;
     
     public StateMachine<GameState, Driver> Fsm { private set; get; }
 
@@ -108,6 +112,7 @@ public class LevelController : MonoBehaviour
             hook.IsCanLaunch = false;
         }
         Fsm.ChangeState(GameState.Win);
+        Vibration.VibrateNope();
         StopPull();
     }
 
@@ -131,6 +136,7 @@ public class LevelController : MonoBehaviour
             hook.IsCanLaunch = false;
         }
         Vibration.VibratePeek();
+        camera.transform.DOShakePosition(loseCameraShakeDuration, loseCameraShakeStrength, loseCameraShakes);
         Fsm.ChangeState(GameState.Lose);
         StopPull();
     }
