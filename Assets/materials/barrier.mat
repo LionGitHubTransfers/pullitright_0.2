@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: floor 3
-  m_Shader: {fileID: 4800000, guid: 49f717889108f4c059afb455329a964c, type: 3}
-  m_ShaderKeywords: 
+  m_Name: barrier
+  m_Shader: {fileID: 4800000, guid: dd496457a855aa341b0d7b7b475a7a3a, type: 3}
+  m_ShaderKeywords: OUTLINES
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1a0294908699441399e06289f7832f12, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -60,34 +60,28 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AmbientPower: 0.998
+    - _AmbientPower: 0.376
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DirectionPitch: 0
-    - _DirectionYaw: 0
     - _DstBlend: 0
-    - _Exponent: 1
     - _GlossMapScale: 1
-    - _Glossiness: 0.808
+    - _Glossiness: 0.931
     - _GlossyReflections: 1
-    - _GradientHeight: 7.36
-    - _GradientYStartPos: 12.23
-    - _Intensity: 1.303
-    - _LightmapPower: 4.13
-    - _Metallic: 0.824
+    - _GradientHeight: 10
+    - _GradientYStartPos: 0
+    - _LightmapPower: 0.5
+    - _Metallic: 0.183
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Offset1: 0
     - _Offset2: 0
-    - _Outline: 1
+    - _Outline: 0.12
     - _Parallax: 0.02
-    - _RampSmooth: 0.1
-    - _RampThreshold: 0.567
-    - _Rotation: 1.78
-    - _Shininess: 0.1
+    - _RampSmooth: 0.346
+    - _RampThreshold: 0.81
+    - _Rotation: 0
     - _SmoothnessTextureChannel: 0
-    - _SpecSmooth: 0.05
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _TexLod: 5
@@ -95,28 +89,26 @@ Material:
     - _ZSmooth: -0.5
     - _ZWrite: 1
     m_Colors:
-    - _AmbientColor: {r: 0.8301887, g: 0.42138562, b: 0.05090782, a: 0}
+    - _AmbientColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
     - _BackBottomColor: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _BackTopColor: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _BottomColor: {r: 0.3962264, g: 0.27001402, b: 0.23736204, a: 0}
-    - _Color: {r: 0.12517802, g: 0.42453593, b: 0.9150943, a: 1}
-    - _Color1: {r: 0.8207547, g: 0, b: 0.03512239, a: 1}
-    - _Color2: {r: 0, g: 0.024572194, b: 0.1509434, a: 1}
-    - _Direction: {r: 0, g: 1, b: 0, a: 0}
+    - _BottomColor: {r: 0, g: 0.5, b: 0.5, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color1: {r: 0.4669811, g: 0.8001233, b: 1, a: 1}
+    - _Color2: {r: 0, g: 0.47085738, b: 1, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FrontBottomColor: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 0}
+    - _FrontBottomColor: {r: 1, g: 0, b: 0, a: 0}
     - _FrontTopColor: {r: 1, g: 0, b: 0, a: 0}
-    - _HColor: {r: 0.785, g: 0.785, b: 0.785, a: 1}
-    - _LeftBottomColor: {r: 0.8584906, g: 0, b: 0.8584906, a: 0}
+    - _HColor: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
+    - _LeftBottomColor: {r: 0.5, g: 0, b: 0.5, a: 0}
     - _LeftTopColor: {r: 0.5, g: 0, b: 0.5, a: 0}
     - _LightTint: {r: 1, g: 1, b: 1, a: 0}
-    - _LightmapColor: {r: 1, g: 0.72738266, b: 0.3066038, a: 0}
+    - _LightmapColor: {r: 0, g: 0, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _RightBottomColor: {r: 0.31706125, g: 0.31706125, b: 0.8962264, a: 0}
-    - _RightTopColor: {r: 1, g: 1, b: 1, a: 0}
-    - _SColor: {r: 0.6114271, g: 0.14244394, b: 0.9150943, a: 1}
-    - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _TopColor: {r: 0.19450872, g: 0.31187353, b: 0.8773585, a: 0}
+    - _RightBottomColor: {r: 0, g: 0, b: 1, a: 0}
+    - _RightTopColor: {r: 0, g: 0, b: 1, a: 0}
+    - _SColor: {r: 0, g: 0, b: 0, a: 1}
+    - _TopColor: {r: 0.39076945, g: 0.3537736, b: 1, a: 0}
   m_BuildTextureStacks: []
