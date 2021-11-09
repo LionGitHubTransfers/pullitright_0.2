@@ -133,7 +133,7 @@ public class LevelController : MonoBehaviour
 
     public void RestartLevel()
     {
-        levelManager.LoadCurrentLevel();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoseLevel()
