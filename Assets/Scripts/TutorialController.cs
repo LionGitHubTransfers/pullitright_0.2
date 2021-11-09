@@ -24,7 +24,7 @@ public class TutorialController : MonoBehaviour
 
         ropeTutorial = DOTween.Sequence()
             .Append(handTutorialTransform.DOScale(0.8f, 0.3f).SetEase(Ease.InSine))
-            .Append(handTutorialTransform.DOLocalMoveY(300f, 1f).SetEase(Ease.InQuad))
+            .Append(handTutorialTransform.DOLocalMoveY(230f, 1f).SetEase(Ease.InQuad))
             .Append(handTutorialTransform.DOScale(1f, 0.3f).SetEase(Ease.InSine))
             .Append(handTutorialTransform.DOLocalMoveY(-227f, 1f).SetEase(Ease.InQuad))
             .SetLoops(-1);
