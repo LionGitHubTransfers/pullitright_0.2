@@ -12,4 +12,10 @@ public class HookTargetPoint : MonoBehaviour
         renderer.material.color = lockedColor;
         Cable = cable;
     }
+
+    public void Unlock(Color color)
+    {
+        renderer.material.color = color;
+        Cable = null;
+    }
 }

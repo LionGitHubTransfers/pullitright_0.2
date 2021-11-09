@@ -23,8 +23,10 @@ public class Hook : MonoBehaviour
     [SerializeField] private MeshRenderer[] cableRenderers;
 
     public event Action<Cable> OnLocked;
+    public event Action<Cable> OnUnlocked;
     private HookTargetPoint[] targetPoints;
     private HookTargetPoint lockedPoint;
+    private ObiRopeExtrudedRenderer obiRenderer;
     private Camera camera;
     private bool isLaunched = false;
     private float startRopeLenght;
@@ -41,6 +43,7 @@ public class Hook : MonoBehaviour
         batch.AddConstraint(obiRope.solverIndices[obiRope.blueprint.activeParticleCount - 1], targetCollider, Vector3.zero, Quaternion.identity, 0, 0, float.PositiveInfinity);
         batch.activeConstraintCount = 2;
         pinConstraints.AddBatch(batch);
+        obiRenderer = obiRope.GetComponent<ObiRopeExtrudedRenderer>();
 
         obiRope.SetConstraintsDirty(Oni.ConstraintType.Pin);
         IsCanLaunch = true;
@@ -60,7 +63,26 @@ public class Hook : MonoBehaviour
     
     private void Update()
     {
-        if (!obiRope.gameObject.activeSelf) return;
+        if (Input.GetMouseButtonDown(0) && !obiRenderer.enabled)
+        {
+            var ray = camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100f))
+            {
+                if (hit.collider.gameObject == gameObject && lockedPoint != null)
+                {
+                    cable.links.RemoveAt(cable.links.Count - 1);
+                    obiRenderer.enabled = true;
+                    lockedPoint.Unlock(startColor);
+                    SetColors(startColor);
+                    lockedPoint = null;
+                    cable.Setup();
+                    OnUnlocked?.Invoke(cable);
+                }
+            }
+        }
+        
+        if (!obiRenderer.enabled) return;
         
         if (Input.GetMouseButtonDown(0))
         {
@@ -123,9 +145,7 @@ public class Hook : MonoBehaviour
                 cable.Setup();
                 lockedPoint.Lock(cable, lockedColor);
                 OnLocked?.Invoke(cable);
-                Destroy(hookRigidbody.gameObject);
-                obiRope.gameObject.SetActive(false);
-                lockedPoint = null;
+                obiRenderer.enabled = false;
                 isLaunched = false;
             }
             else if (isLaunched)

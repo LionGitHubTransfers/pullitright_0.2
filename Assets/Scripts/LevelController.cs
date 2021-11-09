@@ -48,6 +48,11 @@ public class LevelController : MonoBehaviour
                 cables.Add(cable);
                 cableSolver.cables = cables.ToArray();
             };
+            hook.OnUnlocked += (cable) =>
+            {
+                cables.Remove(cable);
+                cableSolver.cables = cables.ToArray();
+            };
         }
     }
 
