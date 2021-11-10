@@ -3,6 +3,7 @@ using DG.Tweening;
 using Filo;
 using MonsterLove.StateMachine;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
@@ -63,7 +64,8 @@ public class LevelController : MonoBehaviour
 
     private void Init_Update()
     {
-        if (Input.GetMouseButton(0))
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+        if (Input.GetMouseButtonDown(0))
         {
             var ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;

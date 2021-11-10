@@ -50,7 +50,7 @@ MonoBehaviour:
   loseCameraShakeStrength: 0.1
   loseCameraShakes: 40
   levelManager: {fileID: 11400000, guid: 7956140752f1f3f4a9b1f09d457efef2, type: 2}
-  vibrationFrameInterval: 10
+  vibrationFrameInterval: 15
 --- !u!114 &623080764128831841
 MonoBehaviour:
   m_ObjectHideFlags: 0

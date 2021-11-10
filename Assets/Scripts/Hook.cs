@@ -3,6 +3,7 @@ using System.Linq;
 using Filo;
 using Obi;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Hook : MonoBehaviour
 {
@@ -50,7 +51,7 @@ public class Hook : MonoBehaviour
         camera = Camera.main;
         startRopeLenght = obiRope.restLength;
         SetColors(startColor);
-        dragMask = LayerMask.GetMask("Drag");
+        dragMask = LayerMask.GetMask("Drag", "UI");
     }
 
     private void SetColors(Color color)
@@ -63,6 +64,7 @@ public class Hook : MonoBehaviour
     
     private void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
         if (Input.GetMouseButtonDown(0) && !obiRenderer.enabled)
         {
             var ray = camera.ScreenPointToRay(Input.mousePosition);
