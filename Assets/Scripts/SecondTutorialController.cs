@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class SecondTutorialController : MonoBehaviour
@@ -9,6 +7,7 @@ public class SecondTutorialController : MonoBehaviour
     [SerializeField] private GameObject tutorialContainer2;
     [SerializeField] private GameObject tutorialContainer3;
     [SerializeField] private float targetY;
+    [SerializeField] private RectTransform[] handsTutorialTransform;
 
     private Hook firstHook;
     private Hook secondHook;
@@ -25,6 +24,13 @@ public class SecondTutorialController : MonoBehaviour
         target = GameObject.FindWithTag("Target").transform;
         firstHook = hooks[0];
         secondHook = hooks[1];
+        foreach (var hand in handsTutorialTransform)
+        {
+            DOTween.Sequence()
+                .Append(hand.DOScale(0.8f, 0.3f).SetEase(Ease.InSine))
+                .Append(hand.DOScale(1f, 0.3f).SetEase(Ease.InSine))
+                .SetLoops(-1);
+        }
         firstHook.OnLocked += cable =>
         {
             tutorialContainer1.SetActive(false);
