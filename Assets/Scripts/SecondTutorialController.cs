@@ -8,9 +8,9 @@ public class SecondTutorialController : MonoBehaviour
     [SerializeField] private GameObject tutorialContainer3;
     [SerializeField] private float targetY;
     [SerializeField] private RectTransform[] handsTutorialTransform;
-
-    private Hook firstHook;
-    private Hook secondHook;
+    [SerializeField] private Hook firstHook;
+    [SerializeField] private Hook secondHook;
+    
     private Transform target;
     private bool isCompeteFirstPull = false;
     private LevelController levelController;
@@ -18,12 +18,9 @@ public class SecondTutorialController : MonoBehaviour
     
     private void Start()
     {
-        var hooks = FindObjectsOfType<Hook>();
         levelController = FindObjectOfType<LevelController>();
         pullButton = FindObjectOfType<PullButton>();
         target = GameObject.FindWithTag("Target").transform;
-        firstHook = hooks[0];
-        secondHook = hooks[1];
         foreach (var hand in handsTutorialTransform)
         {
             DOTween.Sequence()
