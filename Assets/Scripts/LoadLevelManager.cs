@@ -21,7 +21,7 @@ public class LoadLevelManager : ScriptableObject
 
     public void LoadNextLevel()
     {
-        CurrentLevelNumber = (CurrentLevelNumber + 1) % totalLevels;
+        CurrentLevelNumber = CurrentLevelNumber % totalLevels + 1;
         SceneManager.LoadScene($"Level {CurrentLevelNumber}");
     }
 }

@@ -124,7 +124,7 @@ public class LevelController : MonoBehaviour
             hook.IsCanLaunch = false;
         }
         Fsm.ChangeState(GameState.Win);
-        Vibration.VibrateNope();
+        Vibration.VibratePop();
         StopPull();
     }
 
@@ -145,7 +145,7 @@ public class LevelController : MonoBehaviour
         {
             hook.IsCanLaunch = false;
         }
-        Vibration.VibratePeek();
+        Vibration.VibratePop();
         camera.transform.DOShakePosition(loseCameraShakeDuration, loseCameraShakeStrength, loseCameraShakes);
         Fsm.ChangeState(GameState.Lose);
         StopPull();
