@@ -37,6 +37,7 @@ public class WinController : MonoBehaviour
             var bounds = ContainBounds(collider.bounds, other.bounds);
             var distance = Vector3.Distance(collider.transform.position, other.transform.position) < distanceToWin;
             var isWin = percentage && bounds && distance;
+            
             if (isWin && !winColliders.Contains(other))
             {
                 OnChangedWin?.Invoke(true);
@@ -49,6 +50,10 @@ public class WinController : MonoBehaviour
                 OnChangedWin?.Invoke(false);
                 winColliders.Remove(other);
                 Debug.Log($"{other.gameObject.name} leave win trigger");
+            }
+            else
+            {
+                Debug.Log($"Perce: {percentage}, Bounds: {bounds}, Distance: {distance}");
             }
         }
     }
