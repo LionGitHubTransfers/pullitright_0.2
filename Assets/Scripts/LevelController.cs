@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Filo;
@@ -27,8 +28,11 @@ public class LevelController : MonoBehaviour
     public StateMachine<GameState, Driver> Fsm { private set; get; }
 
     private Hook[] hooks;
+    private WinController[] winControllers;
     private List<Cable> cables;
     private Camera camera;
+    private int targetsCount;
+    private int currentTargetsWin = 0;
 
     private void Awake()
     {
@@ -39,9 +43,27 @@ public class LevelController : MonoBehaviour
         Vibration.Init();
     }
 
+    private void OnChangeWinCount(bool isWin)
+    {
+        currentTargetsWin += isWin ? 1 : -1;
+        if (currentTargetsWin < targetsCount) return;
+        WinLevel();
+        foreach (var winController in winControllers)
+        {
+            winController.PlayWinParticle();
+        }
+    }
+
     private void Start()
     {
         hooks = FindObjectsOfType<Hook>();
+        winControllers = FindObjectsOfType<WinController>();
+        targetsCount = GameObject.FindGameObjectsWithTag("Target").Length;
+        Debug.Log($"Total target objects: {targetsCount}");
+        foreach (var winController in winControllers)
+        {
+            winController.OnChangedWin += OnChangeWinCount;
+        }
         foreach (var hook in hooks)
         {
             hook.OnLocked += (cable) =>
@@ -149,5 +171,13 @@ public class LevelController : MonoBehaviour
         camera.transform.DOShakePosition(loseCameraShakeDuration, loseCameraShakeStrength, loseCameraShakes);
         Fsm.ChangeState(GameState.Lose);
         StopPull();
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var winController in winControllers)
+        {
+            winController.OnChangedWin -= OnChangeWinCount;
+        }
     }
 }

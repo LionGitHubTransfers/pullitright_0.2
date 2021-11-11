@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WinController : MonoBehaviour
@@ -8,29 +11,44 @@ public class WinController : MonoBehaviour
     [SerializeField] private ParticleSystem[] winParticles;
     private Collider collider;
 
-    private bool isWin = false;
+    public event Action<bool> OnChangedWin;
+    public List<Collider> winColliders = new List<Collider>();
+
 
     private void Awake()
     {
         collider = GetComponent<Collider>();
+        winColliders.Clear();
+    }
+
+    public void PlayWinParticle()
+    {
+        foreach (var particle in winParticles)
+        {
+            particle.Play();
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Target") && !isWin)
+        if (other.CompareTag("Target"))
         {
             var percentage = BoundsContainedPercentage(other.bounds, collider.bounds) > finishCoefficient;
             var bounds = ContainBounds(collider.bounds, other.bounds);
             var distance = Vector3.Distance(collider.transform.position, other.transform.position) < distanceToWin;
-            Debug.Log($"Perce: {percentage}, Bounds: {bounds}, Distance: {distance}");
-            if (percentage && bounds && distance)
+            var isWin = percentage && bounds && distance;
+            if (isWin && !winColliders.Contains(other))
             {
-                levelController.WinLevel();
-                isWin = true;
-                foreach (var particle in winParticles)
-                {
-                    particle.Play();
-                }
+                OnChangedWin?.Invoke(true);
+                winColliders.Add(other);
+                Debug.Log($"{other.gameObject.name} enter win trigger");
+            }
+
+            if (!isWin && winColliders.Contains(other))
+            {
+                OnChangedWin?.Invoke(false);
+                winColliders.Remove(other);
+                Debug.Log($"{other.gameObject.name} leave win trigger");
             }
         }
     }
