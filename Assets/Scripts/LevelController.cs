@@ -45,6 +45,7 @@ public class LevelController : MonoBehaviour
 
     private void OnChangeWinCount(bool isWin)
     {
+        if (Fsm.State == GameState.Win || Fsm.State == GameState.Lose) return;
         currentTargetsWin += isWin ? 1 : -1;
         if (currentTargetsWin < targetsCount) return;
         WinLevel();
