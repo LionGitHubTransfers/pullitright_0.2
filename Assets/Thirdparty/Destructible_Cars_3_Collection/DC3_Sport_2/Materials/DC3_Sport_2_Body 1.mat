@@ -89,7 +89,7 @@ Material:
     - _BackBottomColor: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _BackTopColor: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _BottomColor: {r: 0, g: 0.3588791, b: 0.5019608, a: 0}
-    - _Color: {r: 0.7735849, g: 0.30286577, b: 0.5824713, a: 1}
+    - _Color: {r: 0.8867924, g: 0.26352793, b: 0.56394196, a: 1}
     - _Color1: {r: 1, g: 1, b: 1, a: 1}
     - _Color2: {r: 0, g: 0, b: 0, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 1}
