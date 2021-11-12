@@ -7,6 +7,30 @@
       "dependencies": {},
       "hash": "f59d147fe04be6a84b3cd7eb93bce149410911be"
     },
+    "com.lionstudios.release.lionanalytics": {
+      "version": "1.3.14",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.lionstudios.release.lionkitcore": "0.9.7",
+        "com.lionstudios.release.lionsdkservice": "1.3.8"
+      },
+      "url": "http://packages.lionstudios.cc:4873"
+    },
+    "com.lionstudios.release.lionkitcore": {
+      "version": "0.9.7",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "http://packages.lionstudios.cc:4873"
+    },
+    "com.lionstudios.release.lionsdkservice": {
+      "version": "1.3.8",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "http://packages.lionstudios.cc:4873"
+    },
     "com.unity.collab-proxy": {
       "version": "1.11.2",
       "depth": 0,

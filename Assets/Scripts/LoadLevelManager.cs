@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu]
 public class LoadLevelManager : ScriptableObject
 {
-    private const string LEVEL = "level"; 
+    private const string LEVEL = "level";
+    public int CurrentAttempt = 0;
     
     [SerializeField] private int totalLevels;
 

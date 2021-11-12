@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Filo;
+using LionStudios.Suite.Analytics;
 using MonsterLove.StateMachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -40,6 +41,7 @@ public class LevelController : MonoBehaviour
         cables = new List<Cable>();
         camera = Camera.main;
         Fsm.ChangeState(GameState.Init);
+        LionAnalytics.LevelStart(levelManager.CurrentLevelNumber, levelManager.CurrentAttempt);
         Vibration.Init();
     }
 
@@ -147,17 +149,21 @@ public class LevelController : MonoBehaviour
             hook.IsCanLaunch = false;
         }
         Fsm.ChangeState(GameState.Win);
+        LionAnalytics.LevelComplete(levelManager.CurrentLevelNumber, levelManager.CurrentAttempt);
         Vibration.VibratePop();
         StopPull();
     }
 
     public void NextLevel()
     {
+        levelManager.CurrentAttempt = 0;
         levelManager.LoadNextLevel();
     }
 
     public void RestartLevel()
     {
+        levelManager.CurrentAttempt++;
+        LionAnalytics.LevelRestart(levelManager.CurrentLevelNumber, levelManager.CurrentAttempt);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -171,6 +177,7 @@ public class LevelController : MonoBehaviour
         Vibration.VibratePop();
         camera.transform.DOShakePosition(loseCameraShakeDuration, loseCameraShakeStrength, loseCameraShakes);
         Fsm.ChangeState(GameState.Lose);
+        LionAnalytics.LevelFail(levelManager.CurrentLevelNumber, levelManager.CurrentAttempt);
         StopPull();
     }
 
