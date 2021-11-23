@@ -95,7 +95,7 @@ Material:
     - _BackBottomColor: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _BackTopColor: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _BottomColor: {r: 0, g: 0.5, b: 0.5, a: 0}
-    - _Color: {r: 0.73860806, g: 0.76196337, b: 0.8113208, a: 1}
+    - _Color: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
     - _Color1: {r: 0.4669811, g: 0.8001233, b: 1, a: 1}
     - _Color2: {r: 0, g: 0.47085738, b: 1, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 1}
@@ -111,7 +111,7 @@ Material:
     - _OutlineColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _RightBottomColor: {r: 0, g: 0, b: 1, a: 0}
     - _RightTopColor: {r: 0, g: 0, b: 1, a: 0}
-    - _SColor: {r: 0.0047169924, g: 0.025348991, b: 1, a: 1}
+    - _SColor: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _TopColor: {r: 0.39076945, g: 0.3537736, b: 1, a: 0}
   m_BuildTextureStacks: []
