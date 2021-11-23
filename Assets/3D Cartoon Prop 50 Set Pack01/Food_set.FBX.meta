@@ -1,0 +1,437 @@
+fileFormatVersion: 2
+guid: e6ef0dd5645fc4f0d8fb00a24fd652c1
+timeCreated: 1470986198
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: 2
+    100002: 2_128
+    100004: 3
+    100006: 3_128
+    100008: 4
+    100010: 4_128
+    100012: apple soda
+    100014: board
+    100016: bread
+    100018: bread piece
+    100020: burrito
+    100022: burrito 1
+    100024: burrito 2
+    100026: cake
+    100028: cherry pie
+    100030: chocolate cake
+    100032: chocolate pie
+    100034: coke
+    100036: coke cup
+    100038: cola
+    100040: cola_128
+    100042: cookie
+    100044: cookie 1
+    100046: cookie 2
+    100048: cream
+    100050: cream cheese donut
+    100052: crepe
+    100054: cup cake
+    100056: donuts
+    100058: egg
+    100060: egg 1
+    100062: egg 2
+    100064: egg 3
+    100066: egg bacon
+    100068: //RootNode
+    100070: fork
+    100072: fried potato
+    100074: frying pan
+    100076: ham egg
+    100078: hamburger
+    100080: hand mixer
+    100082: hotdog
+    100084: icecream
+    100086: icecream 1
+    100088: jam
+    100090: jam 1
+    100092: jam_128
+    100094: kitchen knife
+    100096: lemon
+    100098: lemon juice
+    100100: lemon juice 1
+    100102: lemon soda
+    100104: milk
+    100106: milk 1
+    100108: milk_128
+    100110: orange
+    100112: orange 1
+    100114: orange soda
+    100116: orange_128
+    100118: pancake
+    100120: pepper
+    100122: pepper_128
+    100124: pizza
+    100126: salmon
+    100128: salt
+    100130: salt pepper
+    100132: salt_128
+    100134: sandwich
+    100136: sauce
+    100138: sauce_hot
+    100140: slush
+    100142: slush 1
+    100144: slush 2
+    100146: softicecream
+    100148: soup
+    100150: spoon
+    100152: spoon fork
+    100154: steak
+    100156: taco
+    100158: toaster
+    100160: turner
+    100162: waffle
+    400000: 2
+    400002: 2_128
+    400004: 3
+    400006: 3_128
+    400008: 4
+    400010: 4_128
+    400012: apple soda
+    400014: board
+    400016: bread
+    400018: bread piece
+    400020: burrito
+    400022: burrito 1
+    400024: burrito 2
+    400026: cake
+    400028: cherry pie
+    400030: chocolate cake
+    400032: chocolate pie
+    400034: coke
+    400036: coke cup
+    400038: cola
+    400040: cola_128
+    400042: cookie
+    400044: cookie 1
+    400046: cookie 2
+    400048: cream
+    400050: cream cheese donut
+    400052: crepe
+    400054: cup cake
+    400056: donuts
+    400058: egg
+    400060: egg 1
+    400062: egg 2
+    400064: egg 3
+    400066: egg bacon
+    400068: //RootNode
+    400070: fork
+    400072: fried potato
+    400074: frying pan
+    400076: ham egg
+    400078: hamburger
+    400080: hand mixer
+    400082: hotdog
+    400084: icecream
+    400086: icecream 1
+    400088: jam
+    400090: jam 1
+    400092: jam_128
+    400094: kitchen knife
+    400096: lemon
+    400098: lemon juice
+    400100: lemon juice 1
+    400102: lemon soda
+    400104: milk
+    400106: milk 1
+    400108: milk_128
+    400110: orange
+    400112: orange 1
+    400114: orange soda
+    400116: orange_128
+    400118: pancake
+    400120: pepper
+    400122: pepper_128
+    400124: pizza
+    400126: salmon
+    400128: salt
+    400130: salt pepper
+    400132: salt_128
+    400134: sandwich
+    400136: sauce
+    400138: sauce_hot
+    400140: slush
+    400142: slush 1
+    400144: slush 2
+    400146: softicecream
+    400148: soup
+    400150: spoon
+    400152: spoon fork
+    400154: steak
+    400156: taco
+    400158: toaster
+    400160: turner
+    400162: waffle
+    2300000: 2
+    2300002: 2_128
+    2300004: 3
+    2300006: 3_128
+    2300008: 4
+    2300010: 4_128
+    2300012: board
+    2300014: bread
+    2300016: bread piece
+    2300018: burrito 1
+    2300020: burrito 2
+    2300022: cake
+    2300024: cherry pie
+    2300026: chocolate cake
+    2300028: chocolate pie
+    2300030: coke cup
+    2300032: cola
+    2300034: cola_128
+    2300036: cookie 1
+    2300038: cookie 2
+    2300040: cream
+    2300042: cream cheese donut
+    2300044: crepe
+    2300046: cup cake
+    2300048: donuts
+    2300050: egg 1
+    2300052: egg 2
+    2300054: egg 3
+    2300056: egg bacon
+    2300058: fork
+    2300060: fried potato
+    2300062: frying pan
+    2300064: ham egg
+    2300066: hamburger
+    2300068: hand mixer
+    2300070: hotdog
+    2300072: icecream
+    2300074: icecream 1
+    2300076: jam 1
+    2300078: jam_128
+    2300080: kitchen knife
+    2300082: lemon juice
+    2300084: lemon juice 1
+    2300086: milk 1
+    2300088: milk_128
+    2300090: orange 1
+    2300092: orange_128
+    2300094: pancake
+    2300096: pepper
+    2300098: pepper_128
+    2300100: pizza
+    2300102: salmon
+    2300104: salt
+    2300106: salt_128
+    2300108: sandwich
+    2300110: sauce
+    2300112: sauce_hot
+    2300114: slush 1
+    2300116: slush 2
+    2300118: softicecream
+    2300120: soup
+    2300122: spoon
+    2300124: steak
+    2300126: taco
+    2300128: toaster
+    2300130: turner
+    2300132: waffle
+    3300000: 2
+    3300002: 2_128
+    3300004: 3
+    3300006: 3_128
+    3300008: 4
+    3300010: 4_128
+    3300012: board
+    3300014: bread
+    3300016: bread piece
+    3300018: burrito 1
+    3300020: burrito 2
+    3300022: cake
+    3300024: cherry pie
+    3300026: chocolate cake
+    3300028: chocolate pie
+    3300030: coke cup
+    3300032: cola
+    3300034: cola_128
+    3300036: cookie 1
+    3300038: cookie 2
+    3300040: cream
+    3300042: cream cheese donut
+    3300044: crepe
+    3300046: cup cake
+    3300048: donuts
+    3300050: egg 1
+    3300052: egg 2
+    3300054: egg 3
+    3300056: egg bacon
+    3300058: fork
+    3300060: fried potato
+    3300062: frying pan
+    3300064: ham egg
+    3300066: hamburger
+    3300068: hand mixer
+    3300070: hotdog
+    3300072: icecream
+    3300074: icecream 1
+    3300076: jam 1
+    3300078: jam_128
+    3300080: kitchen knife
+    3300082: lemon juice
+    3300084: lemon juice 1
+    3300086: milk 1
+    3300088: milk_128
+    3300090: orange 1
+    3300092: orange_128
+    3300094: pancake
+    3300096: pepper
+    3300098: pepper_128
+    3300100: pizza
+    3300102: salmon
+    3300104: salt
+    3300106: salt_128
+    3300108: sandwich
+    3300110: sauce
+    3300112: sauce_hot
+    3300114: slush 1
+    3300116: slush 2
+    3300118: softicecream
+    3300120: soup
+    3300122: spoon
+    3300124: steak
+    3300126: taco
+    3300128: toaster
+    3300130: turner
+    3300132: waffle
+    4300000: kitchen knife
+    4300002: sauce
+    4300004: cherry pie
+    4300006: crepe
+    4300008: cream cheese donut
+    4300010: cream
+    4300012: soup
+    4300014: salmon
+    4300016: toaster
+    4300018: sauce_hot
+    4300020: board
+    4300022: hand mixer
+    4300024: turner
+    4300026: icecream
+    4300028: frying pan
+    4300030: egg
+    4300032: egg
+    4300034: egg
+    4300036: burrito
+    4300038: burrito
+    4300040: 2
+    4300042: 2_128
+    4300044: 3_128
+    4300046: 3
+    4300048: 4_128
+    4300050: 4
+    4300052: slush
+    4300054: slush
+    4300056: cookie
+    4300058: cookie
+    4300060: orange
+    4300062: orange_128
+    4300064: lemon juice
+    4300066: lemon juice
+    4300068: jam
+    4300070: jam_128
+    4300072: icecream
+    4300074: donuts
+    4300076: hamburger
+    4300078: ham egg
+    4300080: cake
+    4300082: waffle
+    4300084: hotdog
+    4300086: fried potato
+    4300088: sandwich
+    4300090: pizza
+    4300092: pancake
+    4300094: softicecream
+    4300096: coke cup
+    4300098: bread
+    4300100: bread piece
+    4300102: chocolate cake
+    4300104: taco
+    4300106: chocolate pie
+    4300108: egg bacon
+    4300110: steak
+    4300112: cup cake
+    4300114: milk
+    4300116: milk_128
+    4300118: cola_128
+    4300120: cola
+    4300122: fork
+    4300124: spoon
+    4300126: salt_128
+    4300128: salt
+    4300130: pepper
+    4300132: pepper_128
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
