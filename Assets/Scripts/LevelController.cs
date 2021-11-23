@@ -4,6 +4,7 @@ using DG.Tweening;
 using Filo;
 using LionStudios.Suite.Analytics;
 using MonsterLove.StateMachine;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -25,6 +26,8 @@ public class LevelController : MonoBehaviour
     [SerializeField] private int loseCameraShakes = 50;
     [SerializeField] private LoadLevelManager levelManager;
     [SerializeField] private int vibrationFrameInterval = 10;
+    [SerializeField] private int minTargetToWin = 0;
+    [SerializeField] private TMP_Text targetCounter;
     
     public StateMachine<GameState, Driver> Fsm { private set; get; }
 
@@ -49,6 +52,7 @@ public class LevelController : MonoBehaviour
     {
         if (Fsm.State == GameState.Win || Fsm.State == GameState.Lose) return;
         currentTargetsWin += isWin ? 1 : -1;
+        FillTargetCounter();
         if (currentTargetsWin < targetsCount) return;
         WinLevel();
         foreach (var winController in winControllers)
@@ -57,11 +61,21 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    private void FillTargetCounter()
+    {
+        if (targetCounter != null && minTargetToWin > 0)
+        {
+            targetCounter.SetText($"{currentTargetsWin} / {targetsCount}");    
+        }
+        
+    }
+
     private void Start()
     {
         hooks = FindObjectsOfType<Hook>();
         winControllers = FindObjectsOfType<WinController>();
-        targetsCount = GameObject.FindGameObjectsWithTag("Target").Length;
+        targetsCount = minTargetToWin == 0 ? GameObject.FindGameObjectsWithTag("Target").Length : minTargetToWin;
+        FillTargetCounter();
         Debug.Log($"Total target objects: {targetsCount}");
         foreach (var winController in winControllers)
         {

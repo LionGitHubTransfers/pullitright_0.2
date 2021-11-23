@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class WinController : MonoBehaviour
@@ -28,7 +27,7 @@ public class WinController : MonoBehaviour
             particle.Play();
         }
     }
-
+    
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Target"))
