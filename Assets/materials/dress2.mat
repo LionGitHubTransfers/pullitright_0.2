@@ -93,6 +93,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SketchTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -111,6 +115,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaClip: 0
+    - _AmbientPower: 0.112
     - _Blend: 0
     - _BumpScale: 1
     - _CameraDistanceImpact: 0
@@ -129,6 +134,9 @@ Material:
     - _DstBlend: 0
     - _Emission: 0.5
     - _EmissionChannel: 4
+    - _EnableConstSizeOutline: 0
+    - _EnableTexturedOutline: 0
+    - _EnableZSmooth: 0
     - _EnvironmentReflections: 1
     - _Exponent: 1.016
     - _FlatRimEdgeSmoothness: 0.5
@@ -147,7 +155,12 @@ Material:
     - _GradientCenterX: 0
     - _GradientCenterY: 0
     - _GradientEnabled: 0
+    - _GradientHeight: 10
     - _GradientSize: 10
+    - _GradientYStartPos: 0
+    - _HSV_H: 0
+    - _HSV_S: 0
+    - _HSV_V: 0
     - _IndirectIntensity: 1
     - _IndirectIntensityOutline: 0
     - _Intensity: 1.127
@@ -155,6 +168,7 @@ Material:
     - _LightFalloffSize: 0.0001
     - _LightmapDirectionPitch: 0
     - _LightmapDirectionYaw: 0
+    - _LightmapPower: 0.5
     - _MatCapMaskChannel: 0
     - _MatCapType: 0
     - _Metallic: 0
@@ -162,6 +176,9 @@ Material:
     - _NormalsUVType: 0
     - _OcclusionChannel: 0
     - _OcclusionStrength: 1
+    - _Offset1: 0
+    - _Offset2: 0
+    - _Outline: 1
     - _OutlineDepthOffset: 0
     - _OutlineLightingType: 0
     - _OutlineLightingTypeURP: 0
@@ -181,8 +198,8 @@ Material:
     - _RampScale: 1
     - _RampSmooth: 0.1
     - _RampSmoothOtherLights: 0.5
-    - _RampSmoothing: 0.775
-    - _RampThreshold: 0.858
+    - _RampSmoothing: 0.647
+    - _RampThreshold: 0.675
     - _RampThresholdOtherLights: 0.5
     - _RampType: 0
     - _ReceiveShadows: 1
@@ -193,6 +210,7 @@ Material:
     - _RimEnabled: 0
     - _RimMax: 1
     - _RimMin: 0.5
+    - _Rotation: 0
     - _SelfShadingSize: 0.876
     - _SelfShadingSizeExtra: 0.6
     - _ShadowColorLightAtten: 1
@@ -202,7 +220,8 @@ Material:
     - _Shadow_HSV_S: 0
     - _Shadow_HSV_V: 0
     - _SingleIndirectColor: 0
-    - _Smoothness: 0.5
+    - _SketchSpeed: 6
+    - _Smoothness: 0.05
     - _SmoothnessTextureChannel: 0
     - _SpecularEnabled: 0
     - _SpecularHighlights: 1
@@ -213,6 +232,7 @@ Material:
     - _SpecularType: 0
     - _SrcBlend: 1
     - _Surface: 0
+    - _TexLod: 5
     - _TextureBlendingMode: 0
     - _TextureImpact: 1
     - _UnityShadowMode: 0
@@ -234,12 +254,18 @@ Material:
     - _UseSpecular: 0
     - _VertexColorsEnabled: 0
     - _WorkflowMode: 1
+    - _ZSmooth: -0.5
     - _ZWrite: 1
     - __dummy__: 0
+    - __outline_gui_dummy__: 0
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.913718, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0, g: 0.7, b: 0.74, a: 0}
+    - _AmbientColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    - _BackBottomColor: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _BackTopColor: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _BaseColor: {r: 0.8207547, g: 0.33681917, b: 0.6328158, a: 1}
+    - _BottomColor: {r: 0, g: 0.5, b: 0.5, a: 0}
+    - _Color: {r: 0.9716981, g: 0.6554379, b: 0.6554379, a: 1}
+    - _Color1: {r: 0, g: 0.7285614, b: 0.7735849, a: 0}
     - _Color2: {r: 0.97, g: 0.67, b: 0.51, a: 0}
     - _ColorDim: {r: 0.5754717, g: 0.23067838, b: 0.019001435, a: 1}
     - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
@@ -247,18 +273,30 @@ Material:
     - _ColorDimSteps: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _ColorGradient: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _Direction: {r: 0, g: 1, b: 0, a: 0}
+    - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlatRimColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
     - _FlatSpecularColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
+    - _FrontBottomColor: {r: 1, g: 0, b: 0, a: 0}
+    - _FrontTopColor: {r: 1, g: 0, b: 0, a: 0}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}
+    - _LeftBottomColor: {r: 0.5, g: 0, b: 0.5, a: 0}
+    - _LeftTopColor: {r: 0.5, g: 0, b: 0.5, a: 0}
+    - _LightTint: {r: 1, g: 1, b: 1, a: 0}
+    - _LightmapColor: {r: 0, g: 0, b: 0, a: 0}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
     - _MatCapColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Offset: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RightBottomColor: {r: 0, g: 0, b: 1, a: 0}
+    - _RightTopColor: {r: 0, g: 0, b: 1, a: 0}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.5}
-    - _SColor: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+    - _SColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SketchColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _SpecularColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
+    - _TopColor: {r: 0, g: 1, b: 0, a: 0}
     - _UnityShadowColor: {r: 0.85023, g: 0.85034, b: 0.85045, a: 0.85056}
   m_BuildTextureStacks: []
 --- !u!114 &4161854440260255686
