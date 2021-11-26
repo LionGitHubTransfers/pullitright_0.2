@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentAttempt: 0
   totalLevels: 25
+  tutorialLevels: 5
