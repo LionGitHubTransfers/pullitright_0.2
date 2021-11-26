@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7fbac71514384469db29c33d8fd04c, type: 3}
   m_Name: Load Level Manager
   m_EditorClassIdentifier: 
-  totalLevels: 17
+  CurrentAttempt: 0
+  totalLevels: 25

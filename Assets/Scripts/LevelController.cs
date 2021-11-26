@@ -29,6 +29,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] private int minTargetToWin = 0;
     [SerializeField] private TMP_Text targetCounter;
     
+
     public StateMachine<GameState, Driver> Fsm { private set; get; }
 
     private Hook[] hooks;
@@ -37,7 +38,8 @@ public class LevelController : MonoBehaviour
     private Camera camera;
     private int targetsCount;
     private int currentTargetsWin = 0;
-
+    private bool isVibration = true;
+    
     private void Awake()
     {
         Fsm = new StateMachine<GameState, Driver>(this);
@@ -46,6 +48,7 @@ public class LevelController : MonoBehaviour
         Fsm.ChangeState(GameState.Init);
         LionAnalytics.LevelStart(levelManager.CurrentLevelNumber, levelManager.CurrentAttempt);
         Vibration.Init();
+        isVibration = levelManager.IsVibration;
     }
 
     private void OnChangeWinCount(bool isWin)
@@ -90,6 +93,10 @@ public class LevelController : MonoBehaviour
             };
             hook.OnUnlocked += (cable) =>
             {
+                LionAnalytics.LogEvent("remove_rope", new Dictionary<string, object>
+                {
+                    {"level", levelManager.CurrentLevelNumber.ToString()}
+                });
                 cables.Remove(cable);
                 cableSolver.cables = cables.ToArray();
             };
@@ -121,7 +128,7 @@ public class LevelController : MonoBehaviour
 
     private void Pull_Update()
     {
-        if (Time.frameCount % vibrationFrameInterval == 0)
+        if (isVibration && Time.frameCount % vibrationFrameInterval == 0)
         {
             Vibration.VibratePop();   
         }
@@ -164,7 +171,10 @@ public class LevelController : MonoBehaviour
         }
         Fsm.ChangeState(GameState.Win);
         LionAnalytics.LevelComplete(levelManager.CurrentLevelNumber, levelManager.CurrentAttempt);
-        Vibration.VibratePop();
+        if (isVibration)
+        {
+            Vibration.VibratePop();    
+        }
         StopPull();
     }
 
@@ -188,7 +198,11 @@ public class LevelController : MonoBehaviour
         {
             hook.IsCanLaunch = false;
         }
-        Vibration.VibratePop();
+
+        if (isVibration)
+        {
+            Vibration.VibratePop();   
+        }
         camera.transform.DOShakePosition(loseCameraShakeDuration, loseCameraShakeStrength, loseCameraShakes);
         Fsm.ChangeState(GameState.Lose);
         LionAnalytics.LevelFail(levelManager.CurrentLevelNumber, levelManager.CurrentAttempt);
